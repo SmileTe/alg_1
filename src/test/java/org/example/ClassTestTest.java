@@ -23,7 +23,7 @@ public class ClassTestTest extends TestCase {
 
     @Test
     public void testAdd(){
-       String a1 =  test1.add("111");
+       String a1 = test1.add("89898");
         String a2 =  test1.add(2,"111");
     }
 
@@ -76,4 +76,7 @@ public class ClassTestTest extends TestCase {
     public void testToArray() {
         var a1 = test1.toArray();
     }
+
+
+
 }
