@@ -1,23 +1,25 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ClassTest implements StringList{
     public static ArrayList<String> list1 = new ArrayList<>();
+    public static int size;
 
     public ClassTest(ArrayList<String> list1) {
         this.list1 = list1;
     }
 
     public ClassTest() {
-
+        this.list1 = new ArrayList<>(10);
     }
 
 
     @Override
     public String add(String item) {
         validateItem(item);
-        this.list1.add(item);
+       this.list1.add(size++,item);
         return item;
     }
 
@@ -30,6 +32,7 @@ public class ClassTest implements StringList{
        validateItem(item);
        validateSize(index);
         this.list1.add(index, item);
+        size++;
         return item;
     }
 
@@ -46,6 +49,7 @@ public class ClassTest implements StringList{
         validateItem(item);
 
         this.list1.remove( this.list1.indexOf(item));
+        size--;
         return item;
     }
 
@@ -55,7 +59,7 @@ public class ClassTest implements StringList{
         validateSize(index);
         String item =  this.list1.get(index);
         this.list1.remove(index);
-
+        size--;
         return item;
     }
 
@@ -88,22 +92,25 @@ public class ClassTest implements StringList{
 
     @Override
     public int size() {
-        return  this.list1.size();
+        return  size;
     }
 
     @Override
     public boolean isEmpty() {
-        return  this.list1.isEmpty();
+        return  size==0;
     }
 
     @Override
     public void clear() {
         this.list1.clear();
+        size=0;
     }
 
     @Override
     public String[] toArray() {
-        String[] array =  this.list1.toArray(new String[list1.size()]);
+        String[] array =  this.list1.toArray(new String[size]);
+        Arrays.copyOf(array, size);
+
         return array;
     }
 
