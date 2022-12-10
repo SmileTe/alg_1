@@ -20,8 +20,23 @@ public class ClassTest2 implements StringListInteger{
     @Override
     public Integer add(Integer item) {
         validateItem(item);
+        if(this.list1.length == size){
+            grow();
+        }
+
         this.list1[size++] =item;
         return item;
+    }
+
+    private void grow(){
+        int length = (int) (this.list1.length*1.5);
+        Integer[] list2 = new Integer[length];
+        for (int i = 0; i < this.list1.length-1; i++) {
+            list2[i] = this.list1[i];
+        }
+
+        this.list1= list2;
+
     }
 
     public Integer[] getList1() {
@@ -36,6 +51,8 @@ public class ClassTest2 implements StringListInteger{
         size++;
         return item;
     }
+
+
 
     @Override
     public Integer set(int index, Integer item) {
