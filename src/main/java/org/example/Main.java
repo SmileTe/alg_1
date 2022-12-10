@@ -64,7 +64,7 @@ public class Main {
 //1
         long start1 = System.currentTimeMillis();
         //classTest1.sort(arrayList);
-        quickSort(arrayList, 0, arrayList.length - 1);
+        classTest1.quickSort(arrayList, 0, arrayList.length - 1);
 
         System.out.println(" скорость-" + (System.currentTimeMillis() - start1));
 
@@ -73,9 +73,11 @@ public class Main {
             System.out.print(i + " ");
 
         }
+        System.out.println();
+
         //2
         long start2 = System.currentTimeMillis();
-        quickSort(arrayList2, 0, arrayList.length - 1);
+        cl.quickSort(arrayList2, 0, arrayList.length - 1);
 
         System.out.println(" скорость-" + (System.currentTimeMillis() - start1));
 
@@ -84,10 +86,11 @@ public class Main {
             System.out.print(i + " ");
 
         }
+        System.out.println();
 
         //3
         long start3 = System.currentTimeMillis();
-        quickSort(arrayList3, 0, arrayList.length - 1);
+        classTest3.quickSort(arrayList3, 0, arrayList.length - 1);
 
         System.out.println(" скорость-" + (System.currentTimeMillis() - start1));
 
@@ -100,37 +103,6 @@ public class Main {
 
 
 
-
-    public static void quickSort(Integer[] arr, int begin, int end) {
-        if (begin < end) {
-            int partitionIndex = partition(arr, begin, end);
-
-            quickSort(arr, begin, partitionIndex - 1);
-            quickSort(arr, partitionIndex + 1, end);
-        }
-    }
-
-    private static int partition(Integer[] arr, int begin, int end) {
-        Integer pivot = arr[end];
-        Integer i = (begin - 1);
-
-        for (Integer j = begin; j < end; j++) {
-            if (arr[j] <= pivot) {
-                i++;
-
-                swapElements(arr, i, j);
-            }
-        }
-
-        swapElements(arr, i + 1, end);
-        return i + 1;
-    }
-
-    private static void swapElements(Integer[] arr, int left, int right) {
-        Integer temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
-    }
 
 
 

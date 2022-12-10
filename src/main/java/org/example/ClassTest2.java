@@ -192,7 +192,7 @@ public class ClassTest2 implements StringListInteger{
         }
     }
 
-    public static void swapElements(Integer[] arr, int i, int minElementIndex) {
+    public static void swapElements_(Integer[] arr, int i, int minElementIndex) {
     Integer a = arr[i];
     Integer b = arr[minElementIndex];
         arr[minElementIndex] = a;
@@ -221,6 +221,39 @@ public class ClassTest2 implements StringListInteger{
             }
         }
         return false;
+    }
+
+
+
+    public static void quickSort(Integer[] arr, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
+        }
+    }
+
+    private static int partition(Integer[] arr, int begin, int end) {
+        Integer pivot = arr[end];
+        Integer i = (begin - 1);
+
+        for (Integer j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                swapElements(arr, i, j);
+            }
+        }
+
+        swapElements(arr, i + 1, end);
+        return i + 1;
+    }
+
+    private static void swapElements(Integer[] arr, int left, int right) {
+        Integer temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
     }
 
 }
